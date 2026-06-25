@@ -1,0 +1,218 @@
+/* ===== Yikai Wang — academic site ===== */
+:root {
+  --accent: #7a1f2b;        /* deep maroon */
+  --accent-soft: #9c3a47;
+  --ink: #1c1c1e;
+  --muted: #5c5c66;
+  --line: #e6e3df;
+  --bg: #fdfcfa;
+  --bg-alt: #f5f2ec;
+  --maxw: 860px;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.65;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-soft); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ===== Header / nav ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(253, 252, 250, 0.9);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.brand {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.brand:hover { text-decoration: none; color: var(--accent); }
+.nav-links {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.nav-links a {
+  color: var(--muted);
+  font-size: 0.95rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-links a:hover { background: var(--bg-alt); color: var(--accent); text-decoration: none; }
+.nav-links a.active { color: var(--accent); font-weight: 600; }
+
+/* ===== Layout ===== */
+main {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* ===== Hero ===== */
+.hero {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  padding: 56px 0 40px;
+  border-bottom: 1px solid var(--line);
+}
+.hero-photo {
+  flex: 0 0 auto;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+}
+.hero-text h1 {
+  font-family: var(--serif);
+  font-size: 2.1rem;
+  margin: 0 0 4px;
+  letter-spacing: 0.01em;
+}
+/* CJK-only stack so WebKit/Safari uses the Song serif (not the system sans fallback) */
+.cjk-name {
+  font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  font-weight: 700;
+}
+.hero-text .role {
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin: 0 0 16px;
+}
+.hero-text .meta { margin: 0; }
+.hero-text .meta div { margin: 3px 0; }
+.hero-text .email { font-family: var(--sans); }
+
+.btn {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 9px 20px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn:hover { background: var(--accent-soft); color: #fff; text-decoration: none; transform: translateY(-1px); }
+
+/* ===== Sections ===== */
+section { padding: 36px 0; border-bottom: 1px solid var(--line); }
+section:last-of-type { border-bottom: none; }
+
+h2 {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  margin: 0 0 18px;
+  color: var(--ink);
+  position: relative;
+  padding-bottom: 8px;
+}
+h2::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 44px; height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+h3 {
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  margin: 28px 0 12px;
+  color: var(--accent);
+}
+
+.lead { font-size: 1.05rem; color: var(--muted); }
+
+ul.plain { list-style: none; padding: 0; margin: 0; }
+ul.plain > li { margin: 4px 0; }
+
+/* ===== Publication list ===== */
+.pubs { list-style: none; padding: 0; margin: 0; }
+.pubs > li {
+  padding: 16px 0 16px 18px;
+  border-left: 3px solid var(--line);
+  margin: 0 0 6px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.pubs > li:hover { border-left-color: var(--accent); background: var(--bg-alt); }
+.pubs .title { font-weight: 600; }
+.pubs .authors { color: var(--muted); font-size: 0.95rem; }
+.pubs .venue { font-style: italic; font-size: 0.95rem; }
+.pubs .venue strong { font-style: normal; }
+.pubs .extra { font-size: 0.88rem; color: var(--muted); }
+.tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--bg-alt);
+  color: var(--accent);
+  border: 1px solid var(--line);
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--bg-alt);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.footer-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 28px 24px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-inner a { color: var(--muted); }
+.footer-inner a:hover { color: var(--accent); }
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .hero { flex-direction: column; text-align: center; padding: 36px 0 28px; gap: 20px; }
+  .hero-text .meta div { justify-content: center; }
+  .hero-photo { width: 150px; height: 150px; }
+  .nav { padding: 12px 18px; }
+  main { padding: 0 18px 56px; }
+}
